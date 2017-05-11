@@ -7,6 +7,8 @@ int main()
     Sproyecto Vproyecto[TAMPROYECTOS];
     Sprogramador Vprogramador[TAMPROGRAMADORES];
     Sproyeprogrmador Vproyectoprogramador[TAMPROGRAMADORES*TAMPROYECTOS];
+    Smasdemante Vmasdemandante[TAMPROYECTOS];
+
     int contadorIdprogramador=11;//debido a los proyectos harcodeados
     int contadorIdproyecto=11;//debido a los proyectos harcodeados
     int espacioproyectoprogram=0;
@@ -21,6 +23,13 @@ int main()
     Vprogramador[i].estado=0;
 
 }
+   for(i=0;i<TAMPROYECTOS;i++)
+{
+
+    Vmasdemandante[i].cantidad=0;
+
+}
+
 for(i=0;i<TAMPROYECTOS;i++)
 {
 
@@ -113,7 +122,7 @@ for(i=0;i<TAMPROYECTOS*TAMPROGRAMADORES;i++)
             listarprogramadoresproyectos(Vprogramador,Vproyecto,Vproyectoprogramador,Vcategoria,TAMPROGRAMADORES,TAMPROYECTOS,(TAMPROGRAMADORES*TAMPROYECTOS),TAMANIOCATEGORIA);
         break;
         case 8:
-            proyectomasdemandante(Vprogramador,Vproyecto,Vproyectoprogramador,Vcategoria,TAMPROGRAMADORES,TAMPROYECTOS,(TAMPROGRAMADORES*TAMPROYECTOS),TAMANIOCATEGORIA);
+            proyectomasdemandante(Vprogramador,Vproyecto,Vproyectoprogramador,Vcategoria,Vmasdemandante,TAMPROGRAMADORES,TAMPROYECTOS,(TAMPROGRAMADORES*TAMPROYECTOS),TAMANIOCATEGORIA,TAMPROYECTOS);
         break;
         case 9:
                respuesta='n';

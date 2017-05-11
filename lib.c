@@ -5,7 +5,7 @@ void cargarprogrmandore(Sprogramador vprogramador[])
 {
     int idprogramador[10]={1,2,3,4,5,6,7,8,9,10};
    int idcategoria[10]={1,2,3,1,3,2,2,1,3,2};
-    char nombre[10][30]={"nicolas","laura","mayra","ana","monik","marcela","maria paula","juliana","andrea","camila"};
+    char nombre[10][30]={"nicolas","eugenia","daniel","cristian","adriana","yulian","jose","pedro","juan","maria"};
     char apellido[10][30]={"gonzalez","rodriguez","rojas","rodriguez","zapata","rodriguez","fonseca","herrera","rozo","andrade"};
     int estado[10]={1,1,1,1,1,1,1,1,1,1};
 
@@ -578,7 +578,7 @@ for(j=0;j<tamanioprogramador;j++)
 }
 }
 
-int imprimirprogrmadores(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaniocategoria)
+void imprimirprogrmadores(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaniocategoria)
 {
 
    int i,j,k,l;
@@ -709,7 +709,7 @@ for(i=0;i<tamanioproyecto;i++)
 
 void  listarprogramadoresproyectos(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria)
 {
-int i,j,k,l,espacioelegido;
+int i,j,espacioelegido;
 int idprogramadorElegido=0;
 int flag=0;
    ordenarid(Vprogramador,tamanioprogramador);
@@ -774,23 +774,25 @@ flag=0;
 
 }
 
-void proyectomasdemandante(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria)
-{
-int i,j,k,l;
-int contador[tamanioproyecto];
+void proyectomasdemandante(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],Smasdemante Vmasdemandante[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria,int tmaniomasdemantente){
+int i,k;
+
+int maximacantidad=0;
 //memset((void*)contador,sizeof(int)*tamanioproyecto,0);
 
 for(i=0;i<tamanioproyecto;i++)
 {
     if(Vproyecto[i].estado==1)
     {
+        Vmasdemandante[i].idproyecto=Vproyecto[i].idproyecto;
         for(k=0;k<tamanioproyectopregramador;k++)
         {
             if(Vproyectoprogramador[k].estado==1)
             {
                 if(Vproyecto[i].idproyecto==Vproyectoprogramador[k].idproyecto)
                 {
-                    contador[i]=contador[i]+1;
+
+                    Vmasdemandante[i].cantidad=(Vmasdemandante[i].cantidad)+1;
                 }
             }
         }
@@ -798,10 +800,46 @@ for(i=0;i<tamanioproyecto;i++)
 
     }
 }
+maximacantidad=Vmasdemandante[0].cantidad;
+for(i=0;i<tamanioproyecto;i++)
+{
 
-/// encontrar el mayor en el vector y la pocicion es el proyecto mas demandante
+   if(Vmasdemandante[i].cantidad>maximacantidad)
+   {
+       maximacantidad=Vmasdemandante[i].cantidad;
+   }
 
 
+}
+if(maximacantidad!=0)
+{
+            for(i=0;i<tamanioproyecto;i++)
+            {
+                if(Vmasdemandante[i].cantidad==maximacantidad)
+                {
+                   for(k=0;k<tamanioproyecto;k++)
+                   {
+                       if(Vproyecto[k].idproyecto==Vmasdemandante[i].idproyecto)
+                       {
+                           if(Vproyecto[k].estado==1)
+                           {
+                               printf(" proycto  con mas demanda %s  con %d programadores trabajando\n",Vproyecto[k].nombre,maximacantidad);
+                           }
+                       }
+                   }
+
+
+                }
+
+
+            }
+
+
+    }
+    else
+    {
+        printf("todos los proyectos esta sin progrmador\n");
+    }
 
 }
 

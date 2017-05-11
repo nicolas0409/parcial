@@ -50,6 +50,12 @@ typedef struct
     float sueldo;
 }Sproyeprogrmador;
 
+typedef struct
+{
+int idproyecto;
+int cantidad;
+
+}Smasdemante;
 
 
 
@@ -241,7 +247,7 @@ int bajausuario(Sprogramador Vprogramador[],Sproyeprogrmador Vproyectoprogramado
 int buscarProyectoExistente(Sproyeprogrmador Vproyectoprogramador[],int tamanioproyectopregramador,int programadorelegido,int proyectoelgido);
 int asignarprogrmadorproyecto(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaniocategoria,int *contador,int *idproyecto);
 
-int imprimirprogrmadores(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria);
+void imprimirprogrmadores(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria);
 
 int eleguirproyecto(Sproyecto Vproyecto[],int tamanioproyecto,int *idproyecto);
 
@@ -252,6 +258,6 @@ void imprimirproyectos(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyep
 void  listarprogramadoresproyectos(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria);
 
 
- void proyectomasdemandante(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria);
+ void proyectomasdemandante(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],Smasdemante Vmasdemandante[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria,int tmaniomasdemantente);
 
 #endif // LIB_H_INCLUDED
