@@ -11,6 +11,7 @@
 #define TAMPROYECTOS 1000
 #define TAMNOMBRES  40
 #define TAMANIOCATEGORIA 3
+#define TAMPROYXPROGRAMADOE 50000
 
 
 typedef struct
@@ -258,6 +259,8 @@ void imprimirproyectos(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyep
 void  listarprogramadoresproyectos(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria);
 
 
- void proyectomasdemandante(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],Smasdemante Vmasdemandante[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria,int tmaniomasdemantente);
+ void inicializarestados(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Smasdemante Vmasdemandante[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tmaniomasdemantente);
 
+
+ void proyectomasdemandante(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],Smasdemante Vmasdemandante[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria,int tmaniomasdemantente);
 #endif // LIB_H_INCLUDED

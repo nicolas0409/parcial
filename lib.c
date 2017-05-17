@@ -4,19 +4,18 @@
 void cargarprogrmandore(Sprogramador vprogramador[])
 {
     int idprogramador[10]={1,2,3,4,5,6,7,8,9,10};
-   int idcategoria[10]={1,2,3,1,3,2,2,1,3,2};
+    int idcategoria[10]={1,2,3,1,3,2,2,1,3,2};
     char nombre[10][30]={"nicolas","eugenia","daniel","cristian","adriana","yulian","jose","pedro","juan","maria"};
     char apellido[10][30]={"gonzalez","rodriguez","rojas","rodriguez","zapata","rodriguez","fonseca","herrera","rozo","andrade"};
     int estado[10]={1,1,1,1,1,1,1,1,1,1};
-
     int i;
      for(i=0; i<10;i++)
     {
-        vprogramador[i].idprogramador = idprogramador[i];
-        vprogramador[i].idcategoria = idcategoria[i];
+        vprogramador[i].idprogramador=idprogramador[i];
+        vprogramador[i].idcategoria=idcategoria[i];
         vprogramador[i].estado=estado[i];
         strcpy(vprogramador[i].nombre,nombre[i]);
-       strcpy(vprogramador[i].apellido,apellido[i]);
+        strcpy(vprogramador[i].apellido,apellido[i]);
 
     }
 
@@ -24,7 +23,7 @@ void cargarprogrmandore(Sprogramador vprogramador[])
 
 void cargarcategorias(Scategoria vcategoria[])
 {
-   int idcategoria[5]={1,2,3};
+    int idcategoria[5]={1,2,3};
     char describcion[3][30]={"junior","semisinior","siñior"};
     float pago[3]={100,200,500};
 
@@ -42,9 +41,9 @@ void cargarcategorias(Scategoria vcategoria[])
 
 void cargarproyectos(Sproyecto vproyecto[])
 {
-   int i;
-   int idproyecto[10]={1,2,3,4,5,6,7,8,9,10};
-    char describcion[10][30]={"ibm\0","hsbc\0","windows\0","windows\0","olx\0","mercadolire\0","google\0","mac\0","linux\0","peoplesoft\0"};
+    int i;
+    int idproyecto[10]={1,2,3,4,5,6,7,8,9,10};
+    char describcion[10][30]={"ibm","hsbc","windows","windows","olx","mercadolire","google","mac","linux","peoplesoft"};
     int estado[10]={1,1,1,1,1,1,1,1,1,1};
 
 
@@ -214,14 +213,14 @@ int getValidInt(char requestMessage[],char errorMessage[], int lowLimit, int hiL
                 switch(opcion)
                 {
                     case 1:
-                        getValidString("ingrese el nuevo nombre","el nombre debe ser solo letras",aux,TAMNOMBRES);
+                        getValidString("ingrese el nuevo nombre\n","el nombre debe ser solo letras\n",aux,TAMNOMBRES);
                         strcpy(Vprogramador[i].nombre,aux);
                         printf("nombre cambiado con exito\n");
                         system("pause");
                         system("cls");
                         break;
                          case 2:
-                             getValidString("ingrese el nuevo apellido","el apellido debe ser solo letras",aux,TAMNOMBRES);
+                             getValidString("ingrese el nuevo apellido\n","el apellido debe ser solo letras\n",aux,TAMNOMBRES);
                              strcpy(Vprogramador[i].apellido,aux);
                             printf("apellido cambiado con exito\n");
                             system("pause");
@@ -229,7 +228,8 @@ int getValidInt(char requestMessage[],char errorMessage[], int lowLimit, int hiL
 
                         break;
                          case 3:
-                             idcategoria=getValidInt("ingrese el numero de categotria de 1a3","la categoria debe tener solo nuemros",1,3,4);
+                              printf("1.Junior\n2.Semisinior\n3.Sinior\n");
+                             idcategoria=getValidInt("ingrese el numero de categotria de 1a3 \n","la categoria debe tener solo numeros\n",1,3,4);
                             Vprogramador[i].idcategoria=idcategoria;
                               printf("categoria cambiada con exito\n");
                             system("pause");
@@ -239,8 +239,7 @@ int getValidInt(char requestMessage[],char errorMessage[], int lowLimit, int hiL
                              respuesta='n';
                         break;
 
-                         default:
-                            break;
+
                     }
                 }
 
@@ -270,7 +269,7 @@ int altausuario(Sprogramador Vprogramador[],int tamanioprogramadores,int tamanio
         getValidString("ingrese nombre\n","el nombre debe ser solo letras\n",nombreaux,tamaniostring);
 
         getValidString("ingrese apellid\n","el apellido debe ser solo letras\n",apellidoaux,tamaniostring);
-
+        printf("1.Junior\n2.Semisinior\n3.Sinior\n");
         idcategoria=getValidInt("ingrese el id de categoria","error al introducir   el id de categoria",1,3,4);
         strcpy(Vprogramador[espacio].nombre,nombreaux);
         strcpy(Vprogramador[espacio].apellido,apellidoaux);
@@ -316,7 +315,7 @@ int bajausuario(Sprogramador Vprogramador[],Sproyeprogrmador Vproyectoprogramado
     if(posicieliminar>=0)
     {
         Vprogramador[posicieliminar].estado=0;
-        retorno=1;
+        retorno=posicieliminar;
         for(i=0;i<tamanioproyectoprogramador;i++)
         {
            if(Vproyectoprogramador[i].idprogramador==Vprogramador[posicieliminar].idprogramador)
@@ -333,7 +332,7 @@ int bajausuario(Sprogramador Vprogramador[],Sproyeprogrmador Vproyectoprogramado
     }
     else
     {
-        printf("id no encontrado");
+
         retorno =0;
     }
 return retorno;
@@ -358,11 +357,11 @@ return indice;
 int eleguirproyecto(Sproyecto Vproyecto[],int tamanioproyecto,int *idproyecto)
 {
 
-  int proyectoelegido=0;
-  int contador2=1;
-  int espacio,i;
-   char proyectonombre[TAMNOMBRES];
-   int posicionretornada=-1;
+    int proyectoelegido=0;
+    int contador2=1;
+    int espacio,i;
+    char proyectonombre[TAMNOMBRES];
+    int posicionretornada=-1;
   while(proyectoelegido==0)
     {
         contador2=1;
@@ -774,7 +773,8 @@ flag=0;
 
 }
 
-void proyectomasdemandante(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],Smasdemante Vmasdemandante[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria,int tmaniomasdemantente){
+void proyectomasdemandante(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],Smasdemante Vmasdemandante[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaaniocatecoria,int tmaniomasdemantente)
+{
 int i,k;
 
 int maximacantidad=0;
@@ -843,3 +843,33 @@ if(maximacantidad!=0)
 
 }
 
+ void inicializarestados(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Smasdemante Vmasdemandante[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tmaniomasdemantente)
+{
+
+int i;
+
+ for(i=0;i<tamanioprogramador;i++)
+{
+
+    Vprogramador[i].estado=0;
+
+}
+   for(i=0;i<tamanioproyecto;i++)
+{
+
+    Vproyecto[i].estado=0;
+
+    Vmasdemandante[i].cantidad=0;
+
+}
+for(i=0;i<tamanioproyectopregramador;i++)
+{
+
+    Vproyectoprogramador[i].estado=0;
+}
+
+
+
+
+
+}
