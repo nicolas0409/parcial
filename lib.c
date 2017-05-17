@@ -25,7 +25,7 @@ void cargarcategorias(Scategoria vcategoria[])
 {
     int idcategoria[5]={1,2,3};
     char describcion[3][30]={"junior","semisinior","siñior"};
-    float pago[3]={100,200,500};
+    float pago[3]={5.5,10.10,20.20};
 
 
     int i;
@@ -208,8 +208,8 @@ int getValidInt(char requestMessage[],char errorMessage[], int lowLimit, int hiL
                 flag=1;
                while(respuesta=='y')
                 {
-                    printf("1nombre:%s\n2apellido:%s\n3categoria:%d\n4salir \n",Vprogramador[i].nombre,Vprogramador[i].apellido,Vprogramador[i].idcategoria);
-                opcion=getValidInt("que opcion desea modificar?\n1categoriajunior\t2categoria semisinior \t3categoria siñior","debe ser una opcion numerica\n",1,4,3);
+                    printf("1nombre:%s\n2apellido:%s\n3categoria:%d\n4salir\n",Vprogramador[i].nombre,Vprogramador[i].apellido,Vprogramador[i].idcategoria);
+                opcion=getValidInt("que opcion desea modificar?\n","debe ser una opcion numerica\n",1,4,3);
                 switch(opcion)
                 {
                     case 1:
@@ -422,6 +422,8 @@ int eleguirproyecto(Sproyecto Vproyecto[],int tamanioproyecto,int *idproyecto)
         }
 
     }
+    system("pause");
+    system("cls");
   return posicionretornada;
 }
 int asignarprogrmadorproyecto(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Sproyeprogrmador Vproyectoprogramador[],Scategoria Vcategoria[],int tamanioprogramador,int tamanioproyecto,int tamanioproyectopregramador,int tamaniocategoria,int *contadorid,int *idproyecto)
@@ -435,11 +437,7 @@ int asignarprogrmadorproyecto(Sprogramador Vprogramador[],Sproyecto Vproyecto[],
 
    proyectoelgido=eleguirproyecto(Vproyecto,tamanioproyecto,idproyecto);
 
-
-
-
-
-    for(i=0;i<tamanioprogramador;i++)
+for(i=0;i<tamanioprogramador;i++)
     {
         if(Vprogramador[i].estado==1)
         {
@@ -450,6 +448,8 @@ int asignarprogrmadorproyecto(Sprogramador Vprogramador[],Sproyecto Vproyecto[],
     }
 
     programadorelegido=getValidInt("elija programador \n","tiene que ser solo numeros\n",1,tamanioprogramador,7);
+    system("pause");
+    system("cls");
     horastrabajar=getValidInt("elijala cantidad de horas que desea que trabaje\n","la cantidad de horas tiene que ser un dato numerico\n",1,1000,8);
 
 
@@ -476,8 +476,6 @@ int asignarprogrmadorproyecto(Sprogramador Vprogramador[],Sproyecto Vproyecto[],
 
            if(buscarProyectoExistente(Vproyectoprogramador,tamanioproyectopregramador,Vprogramador[espacioProgramadorelegido].idprogramador,Vproyecto[proyectoelgido].idproyecto))
             {
-
-
             Vproyectoprogramador[*contadorid].estado=1;
             Vproyectoprogramador[*contadorid].horas=horastrabajar;
             Vproyectoprogramador[*contadorid].idprogramador=Vprogramador[espacioProgramadorelegido].idprogramador;
@@ -613,7 +611,7 @@ for(i=0;i<tamanioprogramador;i++)
                               {
                                   if(Vproyecto[l].estado==1)
                                   {
-                                   printf("%s\t suma a cobrar %f\n",Vproyecto[l].nombre,Vproyectoprogramador[k].sueldo);
+                                   printf("%s\t suma a cobrar %.2f\n",Vproyecto[l].nombre,Vproyectoprogramador[k].sueldo);
                                   }
 
                               }
@@ -648,7 +646,7 @@ for(i=0;i<tamanioproyecto;i++)
     {
       contadorcategoria[j]=0;
     }
-   printf("%d\t%s\n",Vproyecto[i].idproyecto,Vproyecto[i].nombre);
+   printf("proyecto %d\t%s\n",Vproyecto[i].idproyecto,Vproyecto[i].nombre);
 
     for(k=0;k<tamanioproyectopregramador;k++)
     {
@@ -778,13 +776,15 @@ void proyectomasdemandante(Sprogramador Vprogramador[],Sproyecto Vproyecto[],Spr
 int i,k;
 
 int maximacantidad=0;
-//memset((void*)contador,sizeof(int)*tamanioproyecto,0);
+
 
 for(i=0;i<tamanioproyecto;i++)
 {
     if(Vproyecto[i].estado==1)
     {
         Vmasdemandante[i].idproyecto=Vproyecto[i].idproyecto;
+        Vmasdemandante[i].cantidad=0;
+
         for(k=0;k<tamanioproyectopregramador;k++)
         {
             if(Vproyectoprogramador[k].estado==1)

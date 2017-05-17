@@ -77,7 +77,7 @@ inicializarestados(Vprogramador,Vproyecto,Vproyectoprogramador,Vmasdemandante,TA
         case 3:
             ideliminar=getValidInt("ingrese el id del programador que desa eliminar","el id debe ser solo numeros sin letras",1,TAMPROGRAMADORES+1,4);
             estado=bajausuario(Vprogramador,Vproyectoprogramador,TAMPROGRAMADORES,TAMPROYXPROGRAMADOE,ideliminar);
-            if(estado>0)
+            if(estado>=0)
             {
                 printf("programador %s eliminado correctamente\n",Vprogramador[estado].nombre);
                 system("pause");
@@ -124,17 +124,24 @@ inicializarestados(Vprogramador,Vproyecto,Vproyectoprogramador,Vmasdemandante,TA
         break;
         case 5:
            imprimirprogrmadores(Vprogramador,Vproyecto,Vproyectoprogramador,Vcategoria,TAMPROGRAMADORES,TAMPROYECTOS,TAMPROYXPROGRAMADOE,TAMANIOCATEGORIA);
+           system("pause");
+            system("cls");
         break;
         case 6:
             imprimirproyectos(Vprogramador,Vproyecto,Vproyectoprogramador,Vcategoria,TAMPROGRAMADORES,TAMPROYECTOS,TAMPROYXPROGRAMADOE,TAMANIOCATEGORIA);
-
+            system("pause");
+            system("cls");
         break;
         case 7:
 
             listarprogramadoresproyectos(Vprogramador,Vproyecto,Vproyectoprogramador,Vcategoria,TAMPROGRAMADORES,TAMPROYECTOS,TAMPROYXPROGRAMADOE,TAMANIOCATEGORIA);
+            system("pause");
+            system("cls");
         break;
         case 8:
-            proyectomasdemandante(Vprogramador,Vproyecto,Vproyectoprogramador,Vcategoria,Vmasdemandante,TAMPROGRAMADORES,TAMPROYECTOS,(TAMPROGRAMADORES*TAMPROYECTOS),TAMANIOCATEGORIA,TAMPROYECTOS);
+            proyectomasdemandante(Vprogramador,Vproyecto,Vproyectoprogramador,Vcategoria,Vmasdemandante,TAMPROGRAMADORES,TAMPROYECTOS,TAMPROYXPROGRAMADOE,TAMANIOCATEGORIA,TAMPROYECTOS);
+            system("pause");
+            system("cls");
         break;
         case 9:
                respuesta='n';
